@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% if not tasks %}
+    <div class="wrapper2" style="display:block;">
+        <div class="box">
+           <h3>
+            You Have No Completed Downloads
+            </h3>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if tasks %}
+    <div class="clearbox">
+        <div class="clear">
+            <a href="/cleartask" class="delete">Clear all</a>
+        </div>
+    </div>
+    {% endif %}
+
+    {% for task in tasks %}
+    <div class="wrapper2">
+        <div class="song">
+            <p>
+                {{task.task_Name}}
+
+                <a href="/{{ task.id }}/remove" class="delete">
+                    Remove
+                </a>
+
+                <a href="/done/{{ task.id }}" class="done">
+                    Done
+                </a>
+            </p>
+        </div>
+    </div>
+    {% endfor %}
+
+{% endblock %}

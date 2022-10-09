@@ -1,0 +1,51 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webapp</title>
+    <link href="{% static '/content/todoStyle.css' %}" rel="stylesheet">
+    <script src="https://unpkg.com/htmx.org@1.7.0" integrity="sha384-EzBXYPt0/T6gxNp0nuPtLkmRpmDBbjg6WmCUZRLXBBwYYmwAUxzlSGej0ARHX0Bo" crossorigin="anonymous"></script
+</head>
+
+
+<body>
+    <div class="container">
+
+        <div class="wrapper1">
+            <div class="box">
+
+                <form action="{% url 'search' %}" method="post" class="form-search">
+                    {% csrf_token %}
+                    <input type="text" class="search-txt" name="m_link" placeholder="Enter Magnet Link">
+                    <button href="{% url 'search' %}" type="submit" class="btn">Download</button>
+                </form>
+            </div>
+        </div>
+
+    <nav class="wrapperhead">
+        <ul class="links">
+           <li><a href="{% url 'search' %}"><b>In Progress</b></a></li>
+            <li><a href="{% url 'complete' %}"><b>Completed</b></a></li>
+        </ul>
+    </nav>
+
+
+    {% block content %}
+
+    {% endblock %}
+
+
+    <footer>
+        <p>Vistein Payne 2021</p>
+    </footer>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% if not links %}
+    <div class="wrapper2" style="display:block;">
+        <div class="box">
+           <h3>
+            You Have No Files To Download
+            </h3>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if links %}
+    <div class="clearbox">
+        <div class="clear">
+            <a href="/cleartask" class="delete">Clear all</a>
+        </div>
+    </div>
+    {% endif %}
+
+    {% for link in links %}
+    <div class="wrapper2">
+        <div class="song">
+            <p>
+                {{link.m_link}}
+
+                <a href="{% url 'link_delete' id=link.id %}" class="delete">
+                    Remove
+                </a>
+
+                <a href="{% url 'start' id=link.id %}" class="done">
+                    Done
+                </a>
+            </p>
+        </div>
+    </div>
+    {% endfor %}
+
+{% endblock %}
